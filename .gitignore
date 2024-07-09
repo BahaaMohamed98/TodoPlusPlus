@@ -1,3 +1,4 @@
 testing
 testing/test.cpp
 cmake-build-debug
+cmake-build-release
