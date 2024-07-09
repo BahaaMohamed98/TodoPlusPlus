@@ -49,54 +49,54 @@ cmake_ninja_workdir = /home/bahaa/CLionProjects/ToDo/cmake-build-debug/
 
 build cmake_object_order_depends_target_ToDo: phony || CMakeFiles/ToDo.dir
 
-build CMakeFiles/ToDo.dir/main.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/main.cpp || cmake_object_order_depends_target_ToDo
-  DEP_FILE = CMakeFiles/ToDo.dir/main.cpp.o.d
+build CMakeFiles/ToDo.dir/src/main.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/src/main.cpp || cmake_object_order_depends_target_ToDo
+  DEP_FILE = CMakeFiles/ToDo.dir/src/main.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/include -I/home/bahaa/CLionProjects/ToDo/tasks
+  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/src/include -I/home/bahaa/CLionProjects/ToDo/tasks
   OBJECT_DIR = CMakeFiles/ToDo.dir
-  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir
+  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir/src
 
-build CMakeFiles/ToDo.dir/Task.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/Task.cpp || cmake_object_order_depends_target_ToDo
-  DEP_FILE = CMakeFiles/ToDo.dir/Task.cpp.o.d
+build CMakeFiles/ToDo.dir/src/Task.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/src/Task.cpp || cmake_object_order_depends_target_ToDo
+  DEP_FILE = CMakeFiles/ToDo.dir/src/Task.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/include -I/home/bahaa/CLionProjects/ToDo/tasks
+  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/src/include -I/home/bahaa/CLionProjects/ToDo/tasks
   OBJECT_DIR = CMakeFiles/ToDo.dir
-  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir
+  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir/src
 
-build CMakeFiles/ToDo.dir/TodoList.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/TodoList.cpp || cmake_object_order_depends_target_ToDo
-  DEP_FILE = CMakeFiles/ToDo.dir/TodoList.cpp.o.d
+build CMakeFiles/ToDo.dir/src/TodoList.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/src/TodoList.cpp || cmake_object_order_depends_target_ToDo
+  DEP_FILE = CMakeFiles/ToDo.dir/src/TodoList.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/include -I/home/bahaa/CLionProjects/ToDo/tasks
+  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/src/include -I/home/bahaa/CLionProjects/ToDo/tasks
   OBJECT_DIR = CMakeFiles/ToDo.dir
-  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir
+  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir/src
 
-build CMakeFiles/ToDo.dir/Menu.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/Menu.cpp || cmake_object_order_depends_target_ToDo
-  DEP_FILE = CMakeFiles/ToDo.dir/Menu.cpp.o.d
+build CMakeFiles/ToDo.dir/src/Menu.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/src/Menu.cpp || cmake_object_order_depends_target_ToDo
+  DEP_FILE = CMakeFiles/ToDo.dir/src/Menu.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/include -I/home/bahaa/CLionProjects/ToDo/tasks
+  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/src/include -I/home/bahaa/CLionProjects/ToDo/tasks
   OBJECT_DIR = CMakeFiles/ToDo.dir
-  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir
+  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir/src
 
-build CMakeFiles/ToDo.dir/FileIo.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/FileIo.cpp || cmake_object_order_depends_target_ToDo
-  DEP_FILE = CMakeFiles/ToDo.dir/FileIo.cpp.o.d
+build CMakeFiles/ToDo.dir/src/FileIo.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/src/FileIo.cpp || cmake_object_order_depends_target_ToDo
+  DEP_FILE = CMakeFiles/ToDo.dir/src/FileIo.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/include -I/home/bahaa/CLionProjects/ToDo/tasks
+  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/src/include -I/home/bahaa/CLionProjects/ToDo/tasks
   OBJECT_DIR = CMakeFiles/ToDo.dir
-  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir
+  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir/src
 
-build CMakeFiles/ToDo.dir/Manager.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/Manager.cpp || cmake_object_order_depends_target_ToDo
-  DEP_FILE = CMakeFiles/ToDo.dir/Manager.cpp.o.d
+build CMakeFiles/ToDo.dir/src/Manager.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/src/Manager.cpp || cmake_object_order_depends_target_ToDo
+  DEP_FILE = CMakeFiles/ToDo.dir/src/Manager.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/include -I/home/bahaa/CLionProjects/ToDo/tasks
+  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/src/include -I/home/bahaa/CLionProjects/ToDo/tasks
   OBJECT_DIR = CMakeFiles/ToDo.dir
-  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir
+  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir/src
 
-build CMakeFiles/ToDo.dir/Input.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/Input.cpp || cmake_object_order_depends_target_ToDo
-  DEP_FILE = CMakeFiles/ToDo.dir/Input.cpp.o.d
+build CMakeFiles/ToDo.dir/src/Input.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/bahaa/CLionProjects/ToDo/src/Input.cpp || cmake_object_order_depends_target_ToDo
+  DEP_FILE = CMakeFiles/ToDo.dir/src/Input.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/include -I/home/bahaa/CLionProjects/ToDo/tasks
+  INCLUDES = -I/home/bahaa/CLionProjects/ToDo/src/include -I/home/bahaa/CLionProjects/ToDo/tasks
   OBJECT_DIR = CMakeFiles/ToDo.dir
-  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir
+  OBJECT_FILE_DIR = CMakeFiles/ToDo.dir/src
 
 
 # =============================================================================
@@ -106,7 +106,7 @@ build CMakeFiles/ToDo.dir/Input.cpp.o: CXX_COMPILER__ToDo_unscanned_Debug /home/
 #############################################
 # Link the executable ToDo
 
-build ToDo: CXX_EXECUTABLE_LINKER__ToDo_Debug CMakeFiles/ToDo.dir/main.cpp.o CMakeFiles/ToDo.dir/Task.cpp.o CMakeFiles/ToDo.dir/TodoList.cpp.o CMakeFiles/ToDo.dir/Menu.cpp.o CMakeFiles/ToDo.dir/FileIo.cpp.o CMakeFiles/ToDo.dir/Manager.cpp.o CMakeFiles/ToDo.dir/Input.cpp.o
+build ToDo: CXX_EXECUTABLE_LINKER__ToDo_Debug CMakeFiles/ToDo.dir/src/main.cpp.o CMakeFiles/ToDo.dir/src/Task.cpp.o CMakeFiles/ToDo.dir/src/TodoList.cpp.o CMakeFiles/ToDo.dir/src/Menu.cpp.o CMakeFiles/ToDo.dir/src/FileIo.cpp.o CMakeFiles/ToDo.dir/src/Manager.cpp.o CMakeFiles/ToDo.dir/src/Input.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/ToDo.dir
   POST_BUILD = :
