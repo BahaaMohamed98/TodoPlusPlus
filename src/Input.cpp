@@ -1,3 +1,4 @@
+#include <Menu.hpp>
 #ifndef INPUT_CPP
 #define INPUT_CPP
 
@@ -5,12 +6,11 @@
 #include <vector>
 #include "Input.hpp"
 
-
 // reads an integer within the given range between {start} and {end} and returns it
 int Input::readInt(const int& start, const int& end, const std::string& prompt) {
     int number;
     do {
-        cout << prompt << "(" << start << "-" << end << "): ";
+        cout << prompt << ": ";
         cin >> number;
 
         if (std::cin.fail()) {
@@ -38,6 +38,9 @@ std::string Input::readTask(const std::string& prompt) {
 
 //prompts user to choose priority and returns it
 int Input::PriorityPrompt(const std::string& prompt) {
+    clearScreen();
+    Menu::printHeader();
+
     const vector<string> priorityOptions{
         "High",
         "medium",
@@ -45,11 +48,11 @@ int Input::PriorityPrompt(const std::string& prompt) {
         "no"
     };
 
-    cout << '\n';
     for (int i = 0; i < priorityOptions.size(); ++i)
         cout << "[" << i + 1 << "] "
             << color(priorityColor[i]) << priorityOptions[i] << " priority"
-            << color(reset) << "\n\n";
+            << color(reset) << "\n";
+    cout << '\n';
 
     // reads priority number
     return readInt(1, static_cast<int>(priorityOptions.size()), prompt) - 1;

@@ -14,6 +14,11 @@ bool Manager::logic() {
     if (chosenOption == menu.getNumberOfOptions()) // exit
         return false;
 
+    clearScreen();
+    Menu::printHeader();
+    todoList.print();
+    cout << '\n';
+
     switch (chosenOption) {
         case 1:
             todoList.addTask(
