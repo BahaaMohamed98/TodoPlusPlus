@@ -8,6 +8,7 @@ Menu::Menu()
       extraOptions({
           "Mark task as complete",
           "Mark task as incomplete",
+          "Change task priority",
           "Remove a task",
       }) {}
 

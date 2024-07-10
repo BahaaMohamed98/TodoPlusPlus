@@ -16,6 +16,7 @@ public:
     void print();
     void assignList(const std::set<Task, TaskComparator>&);
     std::set<Task, TaskComparator>& getList();
+    void changePriority(const int&, const int&);
 };
 
 

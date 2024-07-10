@@ -10,12 +10,13 @@ void FileIO::readFile(const std::string& fileName) {
     }
 
     while (!fin.eof()) {
-        string taskDescription, isDone;
+        string taskDescription, isDone, taskPriority;
         getline(fin, taskDescription, ',');
-        getline(fin, isDone, '\n');
+        getline(fin, isDone, ',');
+        getline(fin, taskPriority, '\n');
 
-        if (!taskDescription.empty() and !isDone.empty())
-            tasks.insert({taskDescription, isDone == "1"});
+        if (!taskDescription.empty() and !isDone.empty() and !taskPriority.empty())
+            tasks.insert({taskDescription, isDone == "1", taskPriority.back() - '0'});
     }
 
     fin.close();
@@ -36,7 +37,7 @@ void FileIO::writeTasks(const set<Task, TaskComparator>& tasks, const std::strin
     }
 
     for (auto& task : tasks)
-        fout << task.getDescription() << ',' << task.isDone() << '\n';
+        fout << task.getDescription() << ',' << task.isDone() << ',' << task.getPriority() << '\n';
 
     fout.close();
 }

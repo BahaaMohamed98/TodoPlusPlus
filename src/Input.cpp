@@ -1,6 +1,12 @@
-#include "include/Input.hpp"
+#ifndef INPUT_CPP
+#define INPUT_CPP
+
+#include <iostream>
+#include <vector>
+#include "Input.hpp"
 
 
+// reads an integer within the given range between {start} and {end} and returns it
 int Input::readInt(const int& start, const int& end, const std::string& prompt) {
     int number;
     do {
@@ -18,6 +24,8 @@ int Input::readInt(const int& start, const int& end, const std::string& prompt) 
     return number;
 }
 
+
+//reads and returns task description
 std::string Input::readTask(const std::string& prompt) {
     cout << prompt << ": ";
     std::string task;
@@ -26,3 +34,40 @@ std::string Input::readTask(const std::string& prompt) {
         getline(cin, task);
     return task;
 }
+
+
+//prompts user to choose priority and returns it
+int Input::PriorityPrompt(const std::string& prompt) {
+    const vector<string> priorityOptions{
+        "High",
+        "medium",
+        "low",
+        "no"
+    };
+
+    cout << '\n';
+    for (int i = 0; i < priorityOptions.size(); ++i)
+        cout << "[" << i + 1 << "] "
+            << color(priorityColor[i]) << priorityOptions[i] << " priority"
+            << color(reset) << "\n\n";
+
+    // reads priority number
+    return readInt(1, static_cast<int>(priorityOptions.size()), prompt) - 1;
+}
+
+/*
+ prompts user to confirm deletion
+ returns true if the user agrees to the deletion
+*/
+bool Input::deletePrompt(const std::string& prompt) {
+    std::string answer;
+    cout << color(red) << prompt << "(y/n)? " << color(reset);
+    cin >> answer;
+    std::transform(answer.begin(), answer.end(), answer.begin(), ::tolower);
+    if (answer == "y" or answer == "yes")
+        return true;
+    return false;
+}
+
+
+#endif //INPUT_CPP

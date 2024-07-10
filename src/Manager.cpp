@@ -9,14 +9,19 @@ Manager::~Manager() {
 }
 
 bool Manager::logic() {
-    const int readInt = Input::readInt(1, menu.getNumberOfOptions(), "Enter operaion number");
+    const int chosenOption = Input::readInt(1, menu.getNumberOfOptions(), "Enter operaion number");
 
-    if (readInt == menu.getNumberOfOptions()) // exit
+    if (chosenOption == menu.getNumberOfOptions()) // exit
         return false;
 
-    switch (readInt) {
+    switch (chosenOption) {
         case 1:
-            todoList.addTask({Input::readTask("Enter task description"), false});
+            todoList.addTask(
+                {
+                    Input::readTask("Enter task description"),
+                    false,
+                    Priority::no_priority
+                });
             break;
         case 2:
             todoList.markComplete(
@@ -27,9 +32,20 @@ bool Manager::logic() {
                 Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1);
             break;
         case 4:
-            todoList.removeTask(Input::readInt(1, static_cast<int>(todoList.getList().size()),
-                                               "Enter task number") - 1);
+            todoList.changePriority(
+                Input::PriorityPrompt("Enter priority number"),
+                Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1
+            );
             break;
+        case 5:
+        {
+            const int chosenTask{
+                Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1
+            };
+            if (Input::deletePrompt("Are you sure you want to delete this task"))
+                todoList.removeTask(chosenTask);
+        }
+        break;
         default:
             break;
     }

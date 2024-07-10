@@ -6,15 +6,18 @@
 class Task {
     std::string description;
     bool done;
+    int priority;
 
 public:
     Task();
-    Task(std::string, bool);
+    Task(std::string, const bool&, const int&);
     [[nodiscard]] bool isDone() const;
     [[nodiscard]] std::string getDescription() const;
     void markDone();
     void markUndone();
-    bool operator==(const Task &other) const;
+    bool operator==(const Task& other) const;
+    [[nodiscard]] int getPriority() const;
+    void setPriority(const int&);
 };
 
 
