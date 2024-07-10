@@ -1,60 +1,73 @@
 # Todo App
 
-A simple console-based todo application written in C++ that allows users to manage their tasks efficiently. The app
-provides functionalities to add, mark as complete/incomplete, and remove tasks. The menu dynamically adjusts to show or
-hide options based on whether tasks exist.
+A simple console-based todo application written in C++ that allows users to manage their tasks efficiently.
 
 ## Features
 
-- Add a new task
-- Mark a task as complete
-- Mark a task as incomplete
-- Remove a task
-- Dynamic menu options based on task list
+- Add tasks
+- Mark tasks as complete or incomplete
+- Remove tasks
+- Assign priorities to tasks (Low, Medium, High)
+- Display tasks with priority colors
+
+## Preview
 
 <p align="center">
-   <img align="center" alt="todo app preview"
-   src = "assets/preview.gif">
+   <img align="center" alt="todo app preview" src="assets/preview.gif">
 </p>
 
 ## Getting Started
 
 ### Prerequisites
 
-- C++ compiler (e.g., `g++`)
-- CMake version 3.28 or higher
-- Make sure you have the necessary permissions to read/write files in the directory where the app is run
+- g++ compiler (or any other C++ compiler)
+- CMake (version 3.28 or higher)
 
-### Installation
+### Building the Project
 
-1. **Clone the repository:**
-    ```sh
-    git clone https://github.com/BahaaMohamed98/TodoPlusPlus.git
-    cd todo-app
-    ```
+#### Using CMake
 
-2. **Compile the application using CMake:**
-    ```sh
-    cd build
-    cmake ..
-    make
-    ```
+Run CMake and build:
 
-### Running the App
+```sh
+   cmake ..
+   make
+```
 
-1. **Run the compiled application:**
-    ```sh
-    ./ToDo
-    ```
+#### Using g++
 
-2. **Follow the on-screen instructions to manage your tasks.**
+1. Compile the source files directly:
+
+```sh
+   g++ -std=c++17 -o build/ToDo src/*.cpp
+   cd build
+   ./ToDo
+```
+
+### Running pre-built binaries
+
+#### On Linux
+
+```sh
+  cd build
+  ./ToDo
+```
+
+#### On Windows
+
+```sh
+  cd build
+  .\ToDo.exe
+```
+
+### Tasks File
+
+Ensure you have a tasks.csv file in the tasks/ directory. The application reads from and writes to this file.
 
 ## Usage
 
-- **Add a Task:** Enter task description when prompted.
-- **Mark Task as Complete/Incomplete:** Select the task number from the list.
-- **Remove a Task:** Select the task number from the list.
-- **Exit:** Choose the exit option to close the application.
+1. Run the application using one of the methods described above.
+2. Follow the on-screen instructions to add, complete, change priority, or remove tasks.
 
 ## Code Structure
 
@@ -65,4 +78,5 @@ hide options based on whether tasks exist.
 - **src/FileIo.cpp:** Manages file input/output operations.
 - **src/Input.cpp:** Handles user input.
 - **src/Menu.cpp:** Manages the display of menu options.
-- **src/include/helpers.hpp:** Utility functions and structures.
+- tasks: Task CSV file
+- build: Build directory
