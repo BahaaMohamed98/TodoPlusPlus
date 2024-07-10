@@ -12,6 +12,11 @@ hide options based on whether tasks exist.
 - Remove a task
 - Dynamic menu options based on task list
 
+<p align="center">
+   <img align="center" alt="todo app preview"
+   src = "assets/preview.gif">
+</p>
+
 ## Getting Started
 
 ### Prerequisites
