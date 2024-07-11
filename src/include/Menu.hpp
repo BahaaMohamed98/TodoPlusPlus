@@ -15,5 +15,4 @@ public:
     [[nodiscard]] int getNumberOfOptions() const;
 };
 
-
 #endif //MENU_HPP

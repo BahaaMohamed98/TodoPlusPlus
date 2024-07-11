@@ -1,9 +1,9 @@
 #ifndef HELPERS_HPP
 #define HELPERS_HPP
 
-#include <map>
 #include <algorithm>
 #include <string>
+#include <map>
 #include "Task.hpp"
 
 struct TaskComparator {

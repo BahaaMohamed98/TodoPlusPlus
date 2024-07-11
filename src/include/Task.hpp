@@ -20,5 +20,4 @@ public:
     void setPriority(const int&);
 };
 
-
 #endif //TASK_HPP

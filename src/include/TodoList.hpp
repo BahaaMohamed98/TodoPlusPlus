@@ -19,5 +19,4 @@ public:
     void changePriority(const int&, const int&);
 };
 
-
 #endif //TODOLIST_HPP

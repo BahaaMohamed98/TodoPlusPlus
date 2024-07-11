@@ -13,9 +13,11 @@ add_executable(ToDo src/main.cpp
         src/Input.cpp
 )
 
+add_executable(test testing/test.cpp)
+
 target_compile_options(ToDo PRIVATE -static)
 target_compile_options(ToDo PRIVATE -static-libgcc)
 target_compile_options(ToDo PRIVATE -static-libstdc++)
 
-target_include_directories(ToDo PRIVATE src/include)
-target_include_directories(ToDo PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tasks)
+include_directories(src/include)
+include_directories(tasks)

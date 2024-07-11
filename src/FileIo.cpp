@@ -11,6 +11,7 @@ void FileIO::readFile(const std::string& fileName) {
 
     while (!fin.eof()) {
         string taskDescription, isDone, taskPriority;
+
         getline(fin, taskDescription, ',');
         getline(fin, isDone, ',');
         getline(fin, taskPriority, '\n');

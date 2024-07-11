@@ -13,5 +13,4 @@ public:
     static void writeTasks(const set<Task, TaskComparator>&, const std::string&);
 };
 
-
 #endif //FILEIO_HPP

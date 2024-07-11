@@ -12,5 +12,4 @@ public:
     static bool deletePrompt(const std::string& prompt);
 };
 
-
 #endif //INPUT_HPP

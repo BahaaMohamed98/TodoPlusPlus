@@ -32,4 +32,3 @@ bool Task::isDone() const {
 std::string Task::getDescription() const {
     return description;
 }
-

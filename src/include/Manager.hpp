@@ -19,5 +19,4 @@ public:
     void printToDoList();
 };
 
-
 #endif //MANAGER_HPP
