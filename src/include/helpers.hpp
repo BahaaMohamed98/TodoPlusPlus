@@ -4,22 +4,6 @@
 #include <algorithm>
 #include <string>
 #include <map>
-#include "Task.hpp"
-
-struct TaskComparator {
-    bool operator()(const Task& a, const Task& b) const {
-        if (a.isDone() != b.isDone())
-            return !a.isDone();
-
-        if (a.getPriority() != b.getPriority())
-            return a.getPriority() < b.getPriority();
-
-        std::string one = a.getDescription(), two = b.getDescription();
-        std::transform(one.begin(), one.end(), one.begin(), ::tolower);
-        std::transform(two.begin(), two.end(), two.begin(), ::tolower);
-        return one <= two;
-    }
-};
 
 inline void clearScreen() {
 #ifdef _WIN32 // For Windows

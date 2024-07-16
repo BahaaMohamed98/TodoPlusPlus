@@ -1,6 +1,7 @@
 #include "Task.hpp"
+#include "helpers.hpp"
 
-Task::Task(): done(false), priority(4) {}
+Task::Task(): done(false), priority(Priority::no_priority) {}
 
 Task::Task(std::string p_taskDescription, const bool& isDone, const int& priority)
     : description(std::move(p_taskDescription)), done(isDone), priority(priority) {}
@@ -23,6 +24,14 @@ int Task::getPriority() const {
 
 void Task::setPriority(const int& priority) {
     this->priority = priority;
+}
+
+std::set<Task, TaskComparator> Task::getSubTasks() const {
+    return subTasks;
+}
+
+void Task::insertSubtask(const Task& subTask) {
+    subTasks.insert(subTask);
 }
 
 bool Task::isDone() const {

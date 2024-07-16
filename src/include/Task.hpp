@@ -2,11 +2,20 @@
 #define TASK_HPP
 
 #include <iostream>
+#include <set>
+#include "helpers.hpp"
+
+class Task;
+
+struct TaskComparator {
+    bool operator()(const Task&, const Task&) const;
+};
 
 class Task {
     std::string description;
     bool done;
     int priority;
+    std::set<Task, TaskComparator> subTasks;
 
 public:
     Task();
@@ -18,6 +27,8 @@ public:
     bool operator==(const Task& other) const;
     [[nodiscard]] int getPriority() const;
     void setPriority(const int&);
+    [[nodiscard]] std::set<Task, TaskComparator> getSubTasks() const;
+    void insertSubtask(const Task&);
 };
 
 #endif //TASK_HPP

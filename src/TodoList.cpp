@@ -37,17 +37,28 @@ void TodoList::markIncomplete(const int& taskNumber) {
 }
 
 void TodoList::print() {
+    auto printTask = [](const Task& task, const int taskNumber) -> void {
+        std::cout << taskNumber << ". [" << (task.isDone() ? '*' : ' ') << "] ";
+
+        if (!task.isDone())
+            std::cout << color(priorityColor[task.getPriority()]);
+
+        std::cout << task.getDescription() << color(Color::reset) << '\n';
+    };
+
     if (taskList.empty())
         return void(std::cout << "No tasks!\n");
 
-    int i = 1;
-    for (auto it = taskList.begin(); it != taskList.end(); ++it, ++i) {
-        std::cout << i << ". [" << (it->isDone() ? '*' : ' ') << "] ";
+    int taskNumber = 1;
+    for (auto taskIter = taskList.begin(); taskIter != taskList.end(); ++taskIter, ++taskNumber) {
+        printTask(*taskIter, taskNumber);
 
-        if (!it->isDone())
-            std::cout << color(priorityColor[it->getPriority()]);
-
-        std::cout << it->getDescription() << color(Color::reset) << '\n';
+        int subTaskNumber = 1;
+        const auto subTasks = taskIter->getSubTasks();
+        for (auto subTaskIter = subTasks.begin(); subTaskIter != subTasks.end(); ++subTaskIter, ++subTaskNumber) {
+            std::cout << '\t';
+            printTask(*subTaskIter, subTaskNumber);
+        }
     }
 }
 
