@@ -3,7 +3,7 @@
 #include "Color.hpp"
 #include "helpers.hpp"
 
-Manager::Manager() {
+Manager::Manager(): showSubtasks(true) {
     loadTasks();
     lastID = fileManager.getLastID();
 }
@@ -22,10 +22,7 @@ bool Manager::logic() {
     if (chosenOption == menu.getNumberOfOptions()) // exit
         return false;
 
-    clearScreen();
-    Menu::printHeader();
-    todoList.print();
-    cout << '\n';
+    printToDoList();
 
     switch (chosenOption) {
     case 1:
@@ -38,18 +35,17 @@ bool Manager::logic() {
             });
         break;
     case 2:
-        todoList.markComplete(
+        todoList.toggleCompletion(
             Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1);
         break;
     case 3:
-        todoList.markIncomplete(
-            Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1);
-        break;
-    case 4:
         todoList.changePriority(
             Input::PriorityPrompt("Enter priority number"),
             Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1
         );
+        break;
+    case 4:
+        showSubtasks = !showSubtasks;
         break;
     case 5:
     {
@@ -58,8 +54,8 @@ bool Manager::logic() {
         };
         if (Input::deletePrompt("Are you sure you want to delete this task"))
             todoList.removeTask(chosenTask);
+        break;
     }
-    break;
     default:
         break;
     }
@@ -68,16 +64,17 @@ bool Manager::logic() {
 
 void Manager::start() {
     do {
-        clearScreen();
-        Menu::printHeader();
-        todoList.print();
-        cout << '\n';
+        printToDoList();
         menu.print(!todoList.getList().empty());
     } while (logic());
+
+    clearScreen();
+    cout << "FREE PALESTINE\n\n";
 }
 
 void Manager::printToDoList() {
-    cout << "Todo: \n";
-    todoList.print();
+    clearScreen();
+    Menu::printHeader();
+    todoList.print(showSubtasks);
     cout << '\n';
 }

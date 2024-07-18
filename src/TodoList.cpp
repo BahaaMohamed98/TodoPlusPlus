@@ -16,37 +16,25 @@ void TodoList::removeTask(const int& taskNumber) {
     taskList.erase(it);
 }
 
-void TodoList::markComplete(const int& taskNumber) {
+void TodoList::toggleCompletion(const int& taskNumber) {
     auto it = taskList.begin();
     std::advance(it, taskNumber);
+    Task temp = *it;
 
     if (it->isDone())
-        return;
+        temp.markUndone();
+    else
+        temp.markDone();
 
-    Task temp = *it;
-    temp.markDone();
     taskList.erase(it);
     taskList.insert(temp);
 }
 
-void TodoList::markIncomplete(const int& taskNumber) {
-    auto it = taskList.begin();
-    std::advance(it, taskNumber);
-
-    if (!it->isDone())
-        return;
-
-    Task temp = *it;
-    temp.markUndone();
-    taskList.erase(it);
-    taskList.insert(temp);
-}
-
-void TodoList::print() {
-    auto printTask = [](const Task& task, const int taskNumber) -> void {
+void TodoList::print(const bool printSubtasks) {
+    auto printTask = [](const Task& task, const int taskNumber, bool printColor) -> void {
         std::cout << taskNumber << ". [" << (task.isDone() ? '*' : ' ') << "] ";
 
-        if (!task.isDone())
+        if (printColor)
             std::cout << color(priorityColor[task.getPriority()]);
 
         std::cout << task.getDescription() << color(Color::reset) << '\n';
@@ -57,13 +45,16 @@ void TodoList::print() {
 
     int taskNumber = 1;
     for (auto taskIter = taskList.begin(); taskIter != taskList.end(); ++taskIter, ++taskNumber) {
-        printTask(*taskIter, taskNumber);
+        printTask(*taskIter, taskNumber, !taskIter->isDone());
+
+        if (!printSubtasks)
+            continue;
 
         int subTaskNumber = 1;
         const auto subTasks = taskIter->getSubTasks();
         for (auto subTaskIter = subTasks.begin(); subTaskIter != subTasks.end(); ++subTaskIter, ++subTaskNumber) {
             std::cout << '\t';
-            printTask(*subTaskIter, subTaskNumber);
+            printTask(*subTaskIter, subTaskNumber, !taskIter->isDone() and !subTaskIter->isDone());
         }
     }
 }

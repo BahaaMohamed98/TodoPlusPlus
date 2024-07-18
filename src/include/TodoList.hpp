@@ -11,9 +11,8 @@ public:
     void loadTasks(const std::set<Task>&);
     void addTask(const Task&);
     void removeTask(const int&);
-    void markComplete(const int&);
-    void markIncomplete(const int&);
-    void print();
+    void toggleCompletion(const int&);
+    void print(bool);
     std::set<Task>& getList();
     void changePriority(const int&, const int&);
 };

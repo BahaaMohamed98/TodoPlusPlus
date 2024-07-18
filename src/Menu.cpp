@@ -6,9 +6,9 @@ Menu::Menu()
           "Exit"
       }),
       extraOptions({
-          "Mark task as complete",
-          "Mark task as incomplete",
+          "Toggle task completion",
           "Change task priority",
+          "Toggle subtasks visibility",
           "Remove a task",
       }) {}
 

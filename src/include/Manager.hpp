@@ -10,6 +10,7 @@ class Manager {
     FileIO fileManager;
     Menu menu;
     int lastID;
+    bool showSubtasks;
 
 public:
     Manager();
