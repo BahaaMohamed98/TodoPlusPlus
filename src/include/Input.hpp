@@ -1,7 +1,6 @@
 #ifndef INPUT_HPP
 #define INPUT_HPP
 
-#include "helpers.hpp"
 using namespace std;
 
 class Input {

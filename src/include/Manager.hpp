@@ -9,10 +9,12 @@ class Manager {
     TodoList todoList;
     FileIO fileManager;
     Menu menu;
+    int lastID;
 
 public:
     Manager();
     ~Manager();
+    void loadTasks();
     bool logic();
     void start();
     void printToDoList();

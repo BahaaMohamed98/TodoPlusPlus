@@ -1,7 +1,9 @@
-#include <iostream>
 #include <vector>
+#include <algorithm>
 #include "Menu.hpp"
 #include "Input.hpp"
+#include "Color.hpp"
+#include "helpers.hpp"
 
 // reads an integer within the given range between {start} and {end} and returns it
 int Input::readInt(const int& start, const int& end, const std::string& prompt) {
@@ -49,8 +51,8 @@ int Input::PriorityPrompt(const std::string& prompt) {
 
     for (int i = 0; i < priorityOptions.size(); ++i)
         cout << "[" << i + 1 << "] "
-            << color(priorityColor[i]) << priorityOptions[i] << " priority"
-            << color(reset) << "\n";
+                << color(priorityColor[i]) << priorityOptions[i] << " priority"
+                << color(reset) << "\n";
     cout << '\n';
 
     // reads priority number

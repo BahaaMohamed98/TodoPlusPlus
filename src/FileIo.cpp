@@ -2,19 +2,6 @@
 #include <fstream>
 #include "FileIo.hpp"
 
-bool TaskComparator::operator()(const Task& a, const Task& b) const {
-    if (a.isDone() != b.isDone())
-        return !a.isDone();
-
-    if (a.getPriority() != b.getPriority())
-        return a.getPriority() < b.getPriority();
-
-    std::string one = a.getDescription(), two = b.getDescription();
-    std::transform(one.begin(), one.end(), one.begin(), ::tolower);
-    std::transform(two.begin(), two.end(), two.begin(), ::tolower);
-    return one <= two;
-}
-
 void FileIO::readFile(const std::string& fileName) {
     // temporary object to create the file if not already created
     std::ofstream(fileName.c_str(), ios::app);
@@ -27,67 +14,76 @@ void FileIO::readFile(const std::string& fileName) {
     }
 
     while (!fin.eof()) {
-        string taskDescription, isDone, taskPriority, subTasksNumber;
+        string id, taskDescription, isDone, taskPriority, subtasksCount;
+        int id_;
 
-        // removing the trailing new line character
-        getline(fin, taskDescription, '\n');
+        auto makeTask = [&]() {
+            id_ = stoi(id);
+            return Task(taskDescription, isDone == "1", stoi(taskPriority), id_);
+        };
 
-        auto readTask = [&](const bool readSubTasksNumber = true) -> void {
+        auto readTask = [&]() {
+            getline(fin, id, ',');
             getline(fin, taskDescription, ',');
             getline(fin, isDone, ',');
             getline(fin, taskPriority, ',');
-            if (readSubTasksNumber)
-                getline(fin, subTasksNumber, ',');
+            getline(fin, subtasksCount, '\n');
         };
 
+        auto emptyInput = [&]() {
+            return id.empty() or taskDescription.empty() or isDone.empty() or taskPriority.empty();
+        };
+
+        // reading and making the parent task
         readTask();
-
-        if (taskDescription.empty() or isDone.empty() or taskPriority.empty())
+        if (emptyInput())
             continue;
+        auto task = makeTask();
 
-        Task task(taskDescription, isDone == "1", taskPriority.back() - '0');
+        // reading subtasks
 
-        int size = stoi(subTasksNumber);
-        for (int i = 0; i < size; ++i) {
-            readTask(false);
-            if (taskDescription.empty() or isDone.empty() or taskPriority.empty())
-                break;
-            task.insertSubtask({taskDescription, isDone == "1", taskPriority.back() - '0'});
+        int subtasksCount_ = stoi(subtasksCount);
+        for (int i = 0; i < subtasksCount_; ++i) {
+            readTask();
+            task.insertSubtask(makeTask());
         }
 
         tasks.insert(task);
+        lastID = max(lastID, id_);
     }
 
     fin.close();
 }
 
-std::set<Task, TaskComparator>& FileIO::getTasks(const std::string& fileName) {
+std::set<Task>& FileIO::getTasks(const std::string& fileName) {
     readFile(fileName);
     return tasks;
 }
 
-void FileIO::writeTasks(const set<Task, TaskComparator>& tasks, const std::string& fileName) {
+void FileIO::writeTasks(const set<Task>& tasks, const std::string& fileName) {
     ofstream fout;
     fout.open(fileName, ios::out | ios::trunc);
 
     if (!fout.is_open()) {
         cerr << "failed to write to: " << fileName << '\n';
-        exit(254);
+        exit(-1);
     }
 
-    auto writeTask = [&](const Task& task, bool printSize = true) {
-        fout << task.getDescription() << ',' << task.isDone() << ',' << task.getPriority() << ',';
-        if (printSize)
-            fout << task.getSubTasks().size() << ',';
+    int newID = 0;
+    auto writeTask = [&](const Task& task) -> void {
+        fout << ++newID << ',' << task.getDescription() << ',' << task.isDone() << ','
+                << task.getPriority() << ',' << task.getSubTasks().size() << '\n';
     };
 
-    fout << '\n';
     for (auto& task : tasks) {
         writeTask(task);
         for (auto& subTask : task.getSubTasks())
-            writeTask(subTask, false);
-        fout << '\n';
+            writeTask(subTask);
     }
 
     fout.close();
+}
+
+int& FileIO::getLastID() {
+    return lastID;
 }
