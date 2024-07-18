@@ -9,8 +9,10 @@ add_executable(ToDo src/main.cpp
         src/Menu.cpp
         src/FileIo.cpp
         src/Manager.cpp
-        src/include/Manager.hpp
         src/Input.cpp
+        src/Color.cpp
+        src/include/Color.hpp
+        src/include/Priority.hpp
 )
 
 add_executable(test testing/test.cpp)

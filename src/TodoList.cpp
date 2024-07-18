@@ -1,5 +1,10 @@
 #include <iostream>
 #include "TodoList.hpp"
+#include "Color.hpp"
+
+void TodoList::loadTasks(const std::set<Task>& externalList) {
+    taskList = externalList;
+}
 
 void TodoList::addTask(const Task& task) {
     taskList.insert(task);
@@ -63,11 +68,7 @@ void TodoList::print() {
     }
 }
 
-void TodoList::assignList(const std::set<Task, TaskComparator>& tasks) {
-    taskList = tasks;
-}
-
-std::set<Task, TaskComparator>& TodoList::getList() {
+std::set<Task>& TodoList::getList() {
     return taskList;
 }
 

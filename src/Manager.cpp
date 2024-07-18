@@ -1,12 +1,18 @@
 #include "Manager.hpp"
 #include "Input.hpp"
+#include "Color.hpp"
 
 Manager::Manager() {
-    todoList.assignList(fileManager.getTasks("../tasks/tasks.csv"));
+    loadTasks();
+    lastID = fileManager.getLastID();
 }
 
 Manager::~Manager() {
     FileIO::writeTasks(todoList.getList(), "../tasks/tasks.csv");
+}
+
+void Manager::loadTasks() {
+    todoList.loadTasks(fileManager.getTasks("../tasks/tasks.csv"));
 }
 
 bool Manager::logic() {
@@ -21,39 +27,40 @@ bool Manager::logic() {
     cout << '\n';
 
     switch (chosenOption) {
-        case 1:
-            todoList.addTask(
-                {
-                    Input::readTask("Enter task description"),
-                    false,
-                    Priority::no_priority
-                });
-            break;
-        case 2:
-            todoList.markComplete(
-                Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1);
-            break;
-        case 3:
-            todoList.markIncomplete(
-                Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1);
-            break;
-        case 4:
-            todoList.changePriority(
-                Input::PriorityPrompt("Enter priority number"),
-                Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1
-            );
-            break;
-        case 5:
-        {
-            const int chosenTask{
-                Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1
-            };
-            if (Input::deletePrompt("Are you sure you want to delete this task"))
-                todoList.removeTask(chosenTask);
-        }
+    case 1:
+        todoList.addTask(
+            {
+                Input::readTask("Enter task description"),
+                false,
+                Priority::no_priority,
+                ++lastID,
+            });
         break;
-        default:
-            break;
+    case 2:
+        todoList.markComplete(
+            Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1);
+        break;
+    case 3:
+        todoList.markIncomplete(
+            Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1);
+        break;
+    case 4:
+        todoList.changePriority(
+            Input::PriorityPrompt("Enter priority number"),
+            Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1
+        );
+        break;
+    case 5:
+    {
+        const int chosenTask{
+            Input::readInt(1, static_cast<int>(todoList.getList().size()), "Enter task number") - 1
+        };
+        if (Input::deletePrompt("Are you sure you want to delete this task"))
+            todoList.removeTask(chosenTask);
+    }
+    break;
+    default:
+        break;
     }
     return true;
 }
