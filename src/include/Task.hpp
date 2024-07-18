@@ -1,7 +1,6 @@
 #ifndef TASK_HPP
 #define TASK_HPP
 
-#include <iostream>
 #include <set>
 #include "helpers.hpp"
 

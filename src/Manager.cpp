@@ -1,4 +1,5 @@
 #include "Manager.hpp"
+#include "Input.hpp"
 
 Manager::Manager() {
     todoList.assignList(fileManager.getTasks("../tasks/tasks.csv"));
