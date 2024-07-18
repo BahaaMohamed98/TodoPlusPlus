@@ -2,3 +2,5 @@ testing
 cmake-build-debug
 cmake-build-release
 .idea
+tasks
+tasks/tasks.csv

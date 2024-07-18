@@ -1,6 +1,7 @@
 #include "Manager.hpp"
 #include "Input.hpp"
 #include "Color.hpp"
+#include "helpers.hpp"
 
 Manager::Manager() {
     loadTasks();

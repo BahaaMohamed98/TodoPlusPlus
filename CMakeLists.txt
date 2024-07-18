@@ -11,8 +11,6 @@ add_executable(ToDo src/main.cpp
         src/Manager.cpp
         src/Input.cpp
         src/Color.cpp
-        src/include/Color.hpp
-        src/include/Priority.hpp
 )
 
 add_executable(test testing/test.cpp)
