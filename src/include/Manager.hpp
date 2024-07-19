@@ -18,7 +18,7 @@ public:
     void loadTasks();
     bool logic();
     void start();
-    void printToDoList();
+    void printToDoList() const;
 };
 
 #endif //MANAGER_HPP

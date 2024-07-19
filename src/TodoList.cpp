@@ -30,16 +30,22 @@ void TodoList::toggleCompletion(const int& taskNumber) {
     taskList.insert(temp);
 }
 
-void TodoList::print(const bool printSubtasks) {
-    auto printTask = [](const Task& task, const int taskNumber, bool printColor) -> void {
-        std::cout << taskNumber << ". [" << (task.isDone() ? '*' : ' ') << "] ";
+void TodoList::printTask(const Task& task, const int taskNumber, const bool printColor,
+                         const bool printNumber = true) {
+    if (!printNumber)
+        std::cout << '-';
+    else
+        std::cout << taskNumber << ".";
 
-        if (printColor)
-            std::cout << color(priorityColor[task.getPriority()]);
+    std::cout << " [" << (task.isDone() ? '*' : ' ') << "] ";
 
-        std::cout << task.getDescription() << color(Color::reset) << '\n';
-    };
+    if (printColor)
+        std::cout << color(priorityColor[task.getPriority()]);
 
+    std::cout << task.getDescription() << color(Color::reset) << '\n';
+};
+
+void TodoList::print(const bool printSubtasks) const {
     if (taskList.empty())
         return void(std::cout << "No tasks!\n");
 
@@ -54,7 +60,7 @@ void TodoList::print(const bool printSubtasks) {
         const auto subTasks = taskIter->getSubTasks();
         for (auto subTaskIter = subTasks.begin(); subTaskIter != subTasks.end(); ++subTaskIter, ++subTaskNumber) {
             std::cout << '\t';
-            printTask(*subTaskIter, subTaskNumber, !taskIter->isDone() and !subTaskIter->isDone());
+            printTask(*subTaskIter, subTaskNumber, !taskIter->isDone() and !subTaskIter->isDone(), false);
         }
     }
 }
@@ -74,4 +80,18 @@ void TodoList::changePriority(const int& priority, const int& taskNumber) {
     temp.setPriority(priority);
     taskList.erase(it);
     taskList.insert(temp);
+}
+
+void TodoList::printSubtasks(const int& taskNumber) {
+    auto task = taskList.begin();
+    advance(task, taskNumber);
+
+    printTask(*task, 0, !task->isDone(), false);
+
+    auto subTasks = task->getSubTasks();
+    int subTaskNumber = 1;
+    for (auto it = subTasks.begin(); it != subTasks.end(); ++it, ++subTaskNumber) {
+        std::cout << '\t';
+        printTask(*it, subTaskNumber, !task->isDone() and !it->isDone());
+    }
 }

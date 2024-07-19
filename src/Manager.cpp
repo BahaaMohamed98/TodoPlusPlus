@@ -72,7 +72,7 @@ void Manager::start() {
     cout << "FREE PALESTINE\n\n";
 }
 
-void Manager::printToDoList() {
+void Manager::printToDoList() const {
     clearScreen();
     Menu::printHeader();
     todoList.print(showSubtasks);
