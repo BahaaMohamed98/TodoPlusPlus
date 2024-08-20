@@ -56,6 +56,9 @@ bool Manager::logic() {
             todoList.removeTask(chosenTask);
         break;
     }
+    case 6:
+
+        break;
     default:
         break;
     }
